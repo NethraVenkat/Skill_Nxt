@@ -1,0 +1,131 @@
+.echo {
+  position: relative;
+  display: inline-grid;
+  place-items: center;
+  margin: 0;
+  width: var(--s);
+}
+.echo svg {
+  position: relative;
+  z-index: 1;
+  overflow: visible;
+}
+/* the glow: a warm light behind Echo that grows with --g (soft, never a white glare) */
+.echo__halo {
+  position: absolute;
+  left: 50%;
+  top: 30%;
+  width: calc(var(--s) * (0.9 + var(--g) * 0.9));
+  aspect-ratio: 1;
+  translate: -50% -50%;
+  border-radius: 50%;
+  background: radial-gradient(
+    closest-side,
+    rgba(255, 196, 92, calc(0.15 + var(--g) * 0.55)),
+    rgba(255, 170, 60, 0)
+  );
+  transition:
+    width 0.35s ease,
+    background 0.35s ease;
+}
+.echo__head {
+  transform-origin: 100px 190px;
+  animation: echo-sway 4.2s ease-in-out infinite;
+}
+.echo[data-mood="cheer"] .echo__head {
+  animation: echo-hop 0.55s cubic-bezier(0.3, 0.7, 0.4, 1) infinite alternate;
+}
+.echo[data-mood="oops"] .echo__head {
+  animation: echo-wobble 0.5s ease-in-out 2;
+}
+.echo__eyes {
+  transform-origin: 100px 64px;
+  animation: echo-blink 5s infinite;
+}
+.echo__mouth--talk {
+  transform-origin: 100px 76px;
+  animation: echo-talk 0.28s ease-in-out infinite alternate;
+}
+.echo__waves {
+  position: absolute;
+  right: -6%;
+  top: 14%;
+  display: flex;
+  gap: 4px;
+}
+.echo__waves i {
+  width: 6px;
+  height: calc(var(--s) * 0.08);
+  border-radius: 3px;
+  background: #ffc35c;
+  animation: echo-wave 0.9s ease-in-out infinite;
+}
+.echo__waves i:nth-child(2) {
+  animation-delay: 0.15s;
+}
+.echo__waves i:nth-child(3) {
+  animation-delay: 0.3s;
+}
+@keyframes echo-sway {
+  0%,
+  100% {
+    transform: rotate(-1.5deg);
+  }
+  50% {
+    transform: rotate(1.5deg);
+  }
+}
+@keyframes echo-hop {
+  from {
+    transform: translateY(0) rotate(-2deg);
+  }
+  to {
+    transform: translateY(-14px) rotate(2deg);
+  }
+}
+@keyframes echo-wobble {
+  25% {
+    transform: rotate(-6deg);
+  }
+  75% {
+    transform: rotate(6deg);
+  }
+}
+@keyframes echo-blink {
+  0%,
+  92%,
+  100% {
+    transform: scaleY(1);
+  }
+  95% {
+    transform: scaleY(0.1);
+  }
+}
+@keyframes echo-talk {
+  from {
+    transform: scaleY(0.35);
+  }
+  to {
+    transform: scaleY(1);
+  }
+}
+@keyframes echo-wave {
+  50% {
+    transform: scaleY(1.9);
+  }
+}
+
+.glowmeter {
+  height: 18px;
+  border-radius: 9px;
+  background: rgba(255, 255, 255, 0.14);
+  overflow: hidden;
+  box-shadow: inset 0 0 0 2px rgba(255, 210, 140, 0.35);
+}
+.glowmeter span {
+  display: block;
+  height: 100%;
+  border-radius: 9px;
+  background: linear-gradient(90deg, #b8742a, #ffc35c, #fff1c2);
+  transition: width 0.12s linear;
+}

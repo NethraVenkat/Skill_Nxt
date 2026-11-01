@@ -1,0 +1,198 @@
+/*
+ * Echo's Stage — a warm theatre: velvet curtains, a wooden stage, golden spotlights. Big, clear,
+ * friendly type for Grade 4. Soft light, no glare.
+ */
+:root {
+  /* Echo's Talking Post: warm letter paper, postbox red, airmail blue, navy ink, mustard stamps. */
+  --velvet: #c8372d;
+  --velvet-2: #d9473b;
+  --velvet-dark: #22305a;
+  --navy: #22305a;
+  --navy-2: #2f4178;
+  --wood: #b98a57;
+  --wood-2: #d4a873;
+  --kraft: #c99a63;
+  --gold: #f2b632;
+  --gold-2: #d99410;
+  --cream: #fffaf0;
+  --cream-2: #f6ecd8;
+  --paper: #fdf7ea;
+  --ink: #2a2622;
+  --ink-2: #5a4f45;
+  --ink-3: #8c7f72;
+  --line: #e6d6b8;
+  --mint: #3a9d6e;
+  --sky: #3b7dd8;
+  --berry: #d6457a;
+  --ok: #2e8b57;
+  --bad: #d9473b;
+  --radius: 22px;
+  --shadow: 0 2px 0 rgba(42, 38, 34, 0.06), 0 14px 30px -14px rgba(42, 38, 34, 0.35);
+  --font-head: "Fredoka", "Nunito", system-ui, sans-serif;
+  --font-body: "Nunito", system-ui, sans-serif;
+  --font-hand: "Patrick Hand", "Comic Sans MS", cursive;
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+  --nav-h: 70px;
+  --airmail: repeating-linear-gradient(-45deg, #c8372d 0 12px, #fff 12px 22px, #3b7dd8 22px 34px, #fff 34px 44px);
+}
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+body {
+  margin: 0;
+  min-height: 100dvh;
+  background:
+    radial-gradient(rgba(140, 110, 70, 0.07) 1px, transparent 1.5px) 0 0 / 18px 18px,
+    var(--cream-2);
+  color: var(--ink);
+  font: 600 18px/1.55 var(--font-body);
+  -webkit-font-smoothing: antialiased;
+}
+h1,
+h2,
+h3 {
+  margin: 0;
+  font-family: var(--font-head);
+  font-weight: 600;
+  line-height: 1.1;
+}
+p {
+  margin: 0;
+}
+button,
+input,
+select,
+textarea {
+  font: inherit;
+  color: inherit;
+}
+a {
+  color: inherit;
+}
+:focus-visible {
+  outline: 4px solid var(--sky);
+  outline-offset: 3px;
+  border-radius: 10px;
+}
+.sr-only {
+  position: absolute !important;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+}
+
+/* ---------- buttons: chunky, friendly, easy to tap ---------- */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  min-height: 54px;
+  padding: 0 26px;
+  border: 0;
+  border-radius: 999px;
+  font: 600 1.1rem/1 var(--font-head);
+  text-decoration: none;
+  cursor: pointer;
+  transition:
+    transform 0.2s var(--ease-out),
+    box-shadow 0.2s var(--ease-out);
+}
+.btn:active {
+  transform: translateY(4px);
+}
+.btn--gold {
+  background: var(--gold);
+  color: var(--ink);
+  box-shadow: 0 6px 0 #c47f12;
+}
+.btn--gold:active {
+  box-shadow: 0 2px 0 #c47f12;
+}
+.btn--red {
+  background: var(--velvet-2);
+  color: #fff;
+  box-shadow: 0 6px 0 var(--velvet-dark);
+}
+.btn--red:active {
+  box-shadow: 0 2px 0 var(--velvet-dark);
+}
+.btn--ghost {
+  background: #fff;
+  color: var(--ink);
+  box-shadow:
+    inset 0 0 0 3px var(--line),
+    0 4px 0 var(--line);
+}
+.btn--mint {
+  background: var(--mint);
+  color: #fff;
+  box-shadow: 0 6px 0 #1c7a56;
+}
+.btn--small {
+  min-height: 44px;
+  padding: 0 18px;
+  font-size: 1rem;
+}
+.btn[disabled] {
+  opacity: 0.45;
+  cursor: not-allowed;
+  transform: none;
+}
+
+/* ---------- cards ---------- */
+.card {
+  padding: 24px;
+  border-radius: var(--radius);
+  background: var(--cream);
+  box-shadow: var(--shadow);
+}
+.pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 14px;
+  border-radius: 999px;
+  background: var(--velvet);
+  color: #fff;
+  font: 600 0.9rem/1 var(--font-head);
+  letter-spacing: 0.04em;
+}
+
+@keyframes pop-in {
+  from {
+    transform: scale(0.5);
+    opacity: 0;
+  }
+}
+@keyframes rise-in {
+  from {
+    transform: translateY(24px);
+    opacity: 0;
+  }
+}
+@keyframes shake {
+  25% {
+    transform: translateX(-8px);
+  }
+  60% {
+    transform: translateX(7px);
+  }
+}
+.shake {
+  animation: shake 0.45s ease-in-out;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}

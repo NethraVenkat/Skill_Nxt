@@ -1,0 +1,452 @@
+.lesson-route {
+  min-height: 0;
+}
+.route-content {
+  display: flex;
+  flex-direction: column;
+  gap: 17px;
+}
+.route-content p {
+  color: #c5d3ea;
+}
+.route-choices {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 14px;
+}
+.route-choices.choices-2,
+.route-choices.choices-4 {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+.route-heading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  margin-bottom: 20px;
+}
+.route-heading-copy { flex: 1; min-width: 0; }
+.route-heading .lesson-title { padding-right: 0; margin-bottom: 0; }
+.route-heading .timing { margin-right: 0; }
+.route-heading .echo-page-character {
+  position: static;
+  flex-shrink: 0;
+  height: 100px;
+}
+.route-heading .echo-page-character img { height: 74px; }
+.route-content > * { order: 1; }
+.route-content > .route-prompt { order: 0; }
+.route-prompt { border-radius: 0 12px 12px 0; margin: 0; }
+.route-content .button-row { flex-wrap: wrap; }
+.route-content label > input,
+.route-content label > select { width: 100%; }
+.route-content .check > input { width: auto; }
+.route-choices > button:hover,
+.note-choice-grid button:hover { border-color: #f7d77c; }
+.route-choices > button:focus-visible,
+.note-choice-grid button:focus-visible { outline: 3px solid #81eadf; outline-offset: 3px; }
+.route-choices > button {
+  background: #24334eea;
+  border: 1px solid #88a6cc55;
+  color: #eff3ff;
+  border-radius: 13px;
+  padding: 20px;
+  text-align: left;
+  display: flex;
+  flex-direction: column;
+  gap: 13px;
+}
+.route-choices > button.selected {
+  background: #3d3950;
+  border-color: #f7d77c;
+}
+.route-choices span {
+  font-size: 10px;
+  color: #f7d77c;
+}
+.route-choices strong {
+  font-family: Fredoka;
+  font-size: 23px;
+  font-weight: 400;
+  line-height: 1.4;
+}
+.route-prompt {
+  font-size: 14px;
+  background: #182a41e8;
+  border-left: 3px solid #efd293;
+  padding: 12px 17px;
+  line-height: 1.65;
+}
+.route-panel,
+.route-stage,
+.route-model {
+  background: #202d47ee;
+  border: 1px solid #b5a57866;
+  border-radius: 15px;
+  padding: 24px;
+}
+.route-panel h2,
+.route-stage h2,
+.route-model h2 {
+  font-size: 30px;
+  margin: 14px 0;
+  overflow-wrap: anywhere;
+}
+.route-panel p,
+.route-stage p {
+  font-size: 14px;
+}
+.route-source {
+  font-size: 21px;
+  line-height: 1.7;
+  background: #19263edb;
+  border: 1px solid #8c9dc63a;
+  border-radius: 12px;
+  padding: 22px;
+}
+.route-three {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 15px;
+}
+.route-three > div {
+  padding: 22px;
+  background: #273b4ded;
+  border: 1px solid #7eafb966;
+  border-radius: 12px;
+}
+.route-three span {
+  font-size: 10px;
+  color: #efd293;
+}
+.route-three h2 {
+  font-size: 25px;
+  margin-top: 15px;
+}
+.route-cue-controls {
+  display: flex;
+  gap: 14px;
+  align-items: center;
+  justify-content: center;
+}
+.route-cue-controls > span {
+  font-size: 11px;
+  color: #b4c6dd;
+}
+.route-note-fields {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 20px;
+}
+.route-note-fields > label {
+  padding: 25px;
+  background: #23354ae8;
+  border: 1px solid #92abbc70;
+  border-radius: 14px;
+}
+.route-note-fields small {
+  display: block;
+  color: #98adca;
+  font-size: 10px;
+  margin-top: 15px;
+}
+.note-choice-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 12px;
+}
+.note-choice-grid button {
+  border: 1px solid #7894b65c;
+  background: #26354de8;
+  color: #d3e2f3;
+  padding: 18px;
+  border-radius: 10px;
+  text-align: left;
+  font-size: 14px;
+  line-height: 1.5;
+}
+.note-choice-grid button.selected {
+  border-color: #f2d587;
+  background: #3c3850;
+}
+.route-feedback {
+  font-size: 13px;
+  color: #ffe4a6 !important;
+}
+.route-feedback-fields {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 18px;
+}
+.route-feedback-fields > label:last-child {
+  grid-column: span 2;
+}
+.route-habits {
+  display: flex;
+  flex-direction: column;
+  gap: 13px;
+}
+.route-habits > div {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  padding: 16px 20px;
+  border-radius: 11px;
+  background: #21324be8;
+  border: 1px solid #9caebc3a;
+}
+.route-habits span {
+  color: #f7d77c;
+  font-size: 12px;
+}
+.route-habits strong {
+  font-size: 17px;
+}
+.route-intro {
+  display: grid;
+  grid-template-columns: 160px 1fr;
+  gap: 30px;
+  align-items: center;
+}
+.route-intro img {
+  width: 160px;
+  height: 200px;
+  object-fit: contain;
+}
+.route-intro h2 {
+  font-size: 30px;
+  color: #efdaa9;
+  margin-bottom: 20px;
+}
+.route-intro p {
+  margin-bottom: 20px;
+  font-size: 17px;
+}
+.route-print {
+  margin-top: 20px;
+}
+.rescue-inline {
+  font-size: 12px;
+  color: #f7d77c;
+}
+.route-model h2 {
+  color: #e6f1ff;
+}
+.route-detective .route-panel,
+.route-detective .route-model {
+  background: #322c4be8;
+}
+.route-broadcast .route-panel,
+.route-broadcast .route-model {
+  background: #203b43e8;
+}
+@media (max-width: 650px) {
+  .route-heading { gap: 12px; margin-bottom: 15px; }
+  .route-heading .echo-page-character { height: 72px; }
+  .route-heading .echo-page-character img { height: 52px; }
+  .route-heading .lesson-title { padding-right: 0; margin-bottom: 0; }
+  .route-heading .timing { margin-right: 0; }
+  .route-choices.choices-2,
+  .route-choices.choices-4 { grid-template-columns: 1fr; }
+  .route-content {
+    gap: 12px;
+  }
+  .route-choices {
+    grid-template-columns: 1fr;
+    gap: 9px;
+  }
+  .route-choices > button {
+    padding: 12px 15px;
+    flex-direction: row;
+    align-items: center;
+    gap: 12px;
+  }
+  .route-choices strong {
+    font-size: 18px;
+    line-height: 1.35;
+  }
+  .route-source {
+    font-size: 16px;
+    padding: 15px;
+    line-height: 1.6;
+  }
+  .route-prompt {
+    font-size: 11px;
+    padding: 10px 13px;
+    line-height: 1.5;
+  }
+  .route-panel,
+  .route-stage,
+  .route-model {
+    padding: 17px;
+  }
+  .route-panel h2,
+  .route-stage h2,
+  .route-model h2 {
+    font-size: 24px;
+    margin: 10px 0;
+    line-height: 1.25;
+  }
+  .route-panel p,
+  .route-stage p {
+    font-size: 11px;
+    line-height: 1.5;
+  }
+  .route-cue-controls {
+    gap: 9px;
+  }
+  .route-cue-controls .btn {
+    font-size: 9px;
+    min-height: 32px;
+    padding: 8px 11px;
+  }
+  .route-note-fields {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+  .route-note-fields > label {
+    padding: 14px;
+  }
+  .route-note-fields small {
+    font-size: 9px;
+    margin-top: 9px;
+  }
+  .note-choice-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 9px;
+  }
+  .note-choice-grid button {
+    font-size: 10px;
+    padding: 11px;
+    line-height: 1.5;
+  }
+  .route-feedback-fields {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+  .route-feedback-fields > label:last-child {
+    grid-column: auto;
+  }
+  .route-three {
+    gap: 9px;
+  }
+  .route-three > div {
+    padding: 13px;
+  }
+  .route-three h2 {
+    font-size: 18px;
+    margin-top: 10px;
+  }
+  .route-habits > div {
+    padding: 13px 15px;
+    gap: 14px;
+  }
+  .route-habits strong {
+    font-size: 13px;
+    line-height: 1.45;
+  }
+  .route-intro {
+    grid-template-columns: 1fr;
+  }
+  .route-intro img {
+    display: none;
+  }
+  .route-intro h2 {
+    font-size: 25px;
+  }
+  .route-intro p {
+    font-size: 14px;
+    margin-bottom: 15px;
+  }
+  .route-print {
+    margin-top: 13px;
+  }
+  .route-content > .btn {
+    align-self: flex-start;
+    min-height: 33px;
+    padding: 9px 13px;
+    font-size: 10px;
+  }
+  .route-content > select {
+    font-size: 11px;
+    padding: 9px;
+  }
+  .route-content > .check {
+    font-size: 10px;
+  }
+  .lesson-route .lesson-title {
+    font-size: 27px;
+  }
+  .rescue-inline {
+    font-size: 10px;
+  }
+  .route-feedback {
+    font-size: 11px;
+  }
+  .route-content input,
+  .route-content select {
+    font-size: 12px;
+    padding: 9px;
+  }
+  .route-content label {
+    font-size: 10px;
+  }
+}
+@media (max-width: 360px) and (max-height: 650px) {
+  .route-content {
+    gap: 10px;
+  }
+  .lesson-route .lesson-title {
+    font-size: 25px;
+    margin-bottom: 15px;
+  }
+  .route-panel,
+  .route-stage,
+  .route-model {
+    padding: 15px;
+  }
+  .route-panel h2,
+  .route-stage h2,
+  .route-model h2 {
+    font-size: 22px;
+  }
+  .route-content > .check {
+    font-size: 9px;
+  }
+  .route-choices strong {
+    font-size: 16px;
+  }
+  .route-choices > button {
+    padding: 10px 12px;
+  }
+  .route-source {
+    font-size: 15px;
+    padding: 13px;
+  }
+  .route-prompt {
+    font-size: 10px;
+    padding: 9px 12px;
+  }
+  .route-feedback-fields {
+    gap: 10px;
+  }
+  .route-habits strong {
+    font-size: 12px;
+  }
+  .route-three h2 {
+    font-size: 16px;
+  }
+  .route-note-fields > label {
+    padding: 12px;
+  }
+  .route-note-fields input {
+    padding: 8px;
+  }
+  .route-feedback-fields input {
+    padding: 8px;
+  }
+  .route-intro h2 {
+    font-size: 24px;
+  }
+}
+@media(max-width:360px) and (max-height:650px){.route-note-fields{gap:9px}.route-note-fields>label{padding:10px}.route-note-fields small{margin-top:6px;font-size:8px}.route-note-fields input{margin-top:6px;padding:7px}.route-print{min-height:32px;padding:8px 12px;margin-top:10px;font-size:10px}}

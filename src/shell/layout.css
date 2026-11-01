@@ -1,0 +1,185 @@
+.skip {
+  position: fixed;
+  left: 12px;
+  top: -80px;
+  z-index: 200;
+  padding: 10px 16px;
+  border-radius: 12px;
+  background: var(--ink);
+  color: #fff;
+}
+.skip:focus {
+  top: 12px;
+}
+.nav {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  min-height: var(--nav-h);
+  padding: 8px 20px;
+  background: var(--navy);
+  color: #fff;
+  box-shadow: 0 8px 0 -2px transparent;
+  border-bottom: 8px solid transparent;
+  border-image: var(--airmail) 8;
+}
+.nav__brand {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font: 600 1.35rem/1 var(--font-head);
+  color: var(--gold);
+  text-decoration: none;
+  white-space: nowrap;
+}
+.nav__links {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+  margin-left: auto;
+}
+.nav__links > a,
+.nav__menu > button,
+.nav__role {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  min-height: 46px;
+  padding: 0 14px;
+  border: 0;
+  border-radius: 999px;
+  background: none;
+  color: #e8edf9;
+  font: 600 1rem/1 var(--font-head);
+  text-decoration: none;
+  cursor: pointer;
+  white-space: nowrap;
+}
+.nav__links > a:hover,
+.nav__menu > button:hover,
+.nav__role:hover {
+  background: rgba(255, 255, 255, 0.1);
+}
+.nav__links > a.active,
+.nav__menu > button.active,
+.nav__role.active {
+  background: var(--gold);
+  color: var(--ink);
+}
+.nav__end {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+.nav__glow {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  min-height: 42px;
+  padding: 0 14px;
+  border-radius: 999px;
+  background: rgba(242, 182, 50, 0.18);
+  color: var(--gold);
+  font: 600 1rem/1 var(--font-head);
+  text-decoration: none;
+}
+.nav__menu {
+  position: relative;
+}
+.drop {
+  position: absolute;
+  top: calc(100% + 8px);
+  left: 0;
+  z-index: 60;
+  display: grid;
+  gap: 2px;
+  min-width: 290px;
+  margin: 0;
+  padding: 10px;
+  list-style: none;
+  border-radius: 20px;
+  background: var(--cream);
+  box-shadow: 0 24px 50px -20px rgba(43, 26, 12, 0.6);
+  animation: rise-in 0.3s var(--ease-out);
+}
+.drop::before {
+  content: "";
+  position: absolute;
+  inset: -10px 0 auto;
+  height: 10px;
+}
+.drop a {
+  display: block;
+  padding: 10px 14px;
+  border-radius: 12px;
+  color: var(--ink);
+  text-decoration: none;
+  font-weight: 700;
+}
+.drop a:hover,
+.drop a.active {
+  background: var(--cream-2);
+}
+
+/* between pages: a letter slides out of its envelope */
+.flap {
+  position: fixed;
+  inset: 0;
+  z-index: 150;
+  display: grid;
+  place-items: center;
+  visibility: hidden;
+  pointer-events: none;
+  background:
+    linear-gradient(to bottom right, transparent 49.6%, rgba(0, 0, 0, 0.06) 50%, transparent 50.4%),
+    linear-gradient(to bottom left, transparent 49.6%, rgba(0, 0, 0, 0.06) 50%, transparent 50.4%),
+    var(--kraft);
+}
+.flap__stamp {
+  display: grid;
+  place-items: center;
+  width: 120px;
+  height: 140px;
+  border: 8px dotted var(--cream);
+  background: var(--velvet);
+  color: #fff;
+  font-size: 3.4rem;
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.25);
+}
+@media (max-width: 1180px) {
+  .nav {
+    flex-wrap: wrap;
+    gap: 6px 10px;
+  }
+  .nav__links {
+    order: 3;
+    width: 100%;
+    margin: 0;
+    overflow-x: auto;
+    scrollbar-width: none;
+  }
+  .nav__end {
+    margin-left: auto;
+  }
+  .nav__menu {
+    position: static;
+  }
+  .drop {
+    position: fixed;
+    top: auto;
+    left: 10px;
+    right: 10px;
+    margin-top: 8px;
+    max-height: 70dvh;
+    overflow-y: auto;
+  }
+}
+@media (max-width: 520px) {
+  .nav__role {
+    padding: 0 8px;
+    font-size: 0.85rem;
+  }
+}

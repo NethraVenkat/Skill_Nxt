@@ -1,0 +1,1 @@
+{"version":"0.0.1","configurations":[{"name":"SpeakLab","runtimeExecutable":"npm","runtimeArgs":["run","dev","--","--port","5400","--strictPort"],"port":5400}]}
