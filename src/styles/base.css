@@ -1,0 +1,238 @@
+/*
+ * DATA CITY — "The Lost Memories". A storybook-film look: warm daylight, clear colour, crisp edges.
+ * No glow, no blur, no glass. Depth comes from layers, soft shadows and motion.
+ */
+:root {
+  --ink: #14213d;
+  --ink-2: #3c4a6b;
+  --ink-3: #6b7896;
+  --paper: #fffdf7;
+  --paper-2: #f6f1e4;
+  --line: #e4dccb;
+  --sky-1: #7cc4f5;
+  --sky-2: #bfe5ff;
+  --sun: #ffc857;
+  --gold: #f4a62a;
+  --coral: #ff7a59;
+  --leaf: #3fae5a;
+  --blue: #2f6fe0;
+  --violet: #7c4fe0;
+  --teal: #15a39a;
+  --red: #e5484d;
+  --ok: #1f9d55;
+  --code-bg: #12203f;
+  --code-ink: #e8eefc;
+  --radius: 22px;
+  --shadow: 0 1px 0 rgba(20, 33, 61, 0.04), 0 10px 30px -12px rgba(20, 33, 61, 0.28);
+  --shadow-lg: 0 30px 60px -24px rgba(20, 33, 61, 0.45);
+  --font-head: 'Poppins', system-ui, sans-serif;
+  --font-body: 'Inter', system-ui, sans-serif;
+  --font-code: 'JetBrains Mono', ui-monospace, monospace;
+  --ease-film: cubic-bezier(0.65, 0, 0.35, 1);
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+  --nav-h: 68px;
+  color-scheme: light;
+}
+:root[data-theme='night'] {
+  --ink: #eef3ff;
+  --ink-2: #c3cde6;
+  --ink-3: #8e9bbb;
+  --paper: #13213f;
+  --paper-2: #182a50;
+  --line: #2a3d68;
+  --sky-1: #1b2c5c;
+  --sky-2: #34508f;
+  --shadow: 0 1px 0 rgba(0, 0, 0, 0.2), 0 12px 30px -12px rgba(0, 0, 0, 0.6);
+  color-scheme: dark;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+html {
+  -webkit-text-size-adjust: 100%;
+}
+html.lenis,
+html.lenis body {
+  height: auto;
+}
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+body {
+  margin: 0;
+  min-height: 100dvh;
+  background: var(--paper-2);
+  color: var(--ink);
+  font: 400 17px/1.6 var(--font-body);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+h1,
+h2,
+h3 {
+  margin: 0;
+  font-family: var(--font-head);
+  line-height: 1.12;
+  letter-spacing: -0.01em;
+}
+p {
+  margin: 0;
+}
+code,
+pre {
+  font-family: var(--font-code);
+}
+a {
+  color: inherit;
+}
+button {
+  font: inherit;
+  color: inherit;
+}
+img {
+  max-width: 100%;
+}
+:focus-visible {
+  outline: 3px solid var(--blue);
+  outline-offset: 3px;
+  border-radius: 8px;
+}
+.sr-only {
+  position: absolute !important;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+}
+
+/* ---------- buttons ---------- */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  min-height: 48px;
+  padding: 0 24px;
+  border: 0;
+  border-radius: 999px;
+  font: 600 1rem/1 var(--font-head);
+  text-decoration: none;
+  cursor: pointer;
+  transition:
+    transform 0.25s var(--ease-out),
+    box-shadow 0.25s var(--ease-out),
+    background 0.2s;
+}
+.btn:active {
+  transform: translateY(2px) scale(0.98);
+}
+.btn--primary {
+  background: var(--ink);
+  color: #fff;
+  box-shadow: 0 8px 20px -8px rgba(20, 33, 61, 0.6);
+}
+:root[data-theme='night'] .btn--primary {
+  background: #fff;
+  color: #14213d;
+}
+.btn--primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 14px 26px -10px rgba(20, 33, 61, 0.6);
+}
+.btn--sun {
+  background: var(--sun);
+  color: #2b1d00;
+  box-shadow: 0 8px 0 #d99a1e;
+}
+.btn--sun:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 0 #d99a1e;
+}
+.btn--sun:active {
+  transform: translateY(6px);
+  box-shadow: 0 2px 0 #d99a1e;
+}
+.btn--ghost {
+  background: transparent;
+  color: var(--ink);
+  box-shadow: inset 0 0 0 2px var(--line);
+}
+.btn--ghost:hover {
+  box-shadow: inset 0 0 0 2px var(--ink-3);
+}
+.btn--run {
+  min-height: 42px;
+  padding: 0 18px;
+  border-radius: 12px;
+  background: var(--ok);
+  color: #fff;
+}
+.btn[disabled] {
+  opacity: 0.45;
+  cursor: not-allowed;
+  transform: none;
+}
+
+/* ---------- cards & panels ---------- */
+.card {
+  background: var(--paper);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+}
+
+/* ---------- code ---------- */
+.code {
+  margin: 0;
+  padding: 18px 20px;
+  border-radius: 16px;
+  background: var(--code-bg);
+  color: var(--code-ink);
+  font: 400 0.92rem/1.7 var(--font-code);
+  overflow-x: auto;
+  white-space: pre;
+}
+.code .k {
+  color: #ffd27a;
+}
+.code .s {
+  color: #9be7a5;
+}
+.code .n {
+  color: #ffab85;
+}
+.code .c {
+  color: #7f8fb5;
+}
+.code .hl {
+  background: rgba(255, 200, 87, 0.22);
+  border-radius: 4px;
+  box-shadow: 0 0 0 2px rgba(255, 200, 87, 0.22);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* shared motion */
+@keyframes bob {
+  50% {
+    transform: translateY(-6px);
+  }
+}
+@keyframes snap-in {
+  from {
+    transform: scale(0.4);
+    opacity: 0;
+  }
+}

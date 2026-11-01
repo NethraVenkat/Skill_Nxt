@@ -1,0 +1,140 @@
+.char {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 0;
+  --w: calc(var(--h) * var(--ratio));
+}
+.char__frame {
+  position: relative;
+  width: var(--w);
+  height: calc(var(--h) * var(--crop));
+  overflow: hidden;
+  transform-origin: 50% 100%;
+  animation: breathe 5s ease-in-out infinite;
+}
+.char__frame img {
+  display: block;
+  width: var(--w);
+  height: var(--h);
+  max-width: none;
+  user-select: none;
+}
+/* the figure fades out at the bottom edge so cropped characters sit into the scene */
+.char__frame::after {
+  content: '';
+  position: absolute;
+  inset: auto 0 0 0;
+  height: 16%;
+  background: linear-gradient(to bottom, transparent, var(--fade, transparent));
+}
+
+/* the speech bubble: crisp paper with a tail toward the character */
+.char__say {
+  position: relative;
+  z-index: 2;
+  max-width: min(320px, 80vw);
+  margin-bottom: 14px;
+  padding: 12px 16px 13px;
+  border: 2px solid var(--ink);
+  border-radius: 18px;
+  background: #fff;
+  color: #14213d;
+  font: 500 0.98rem/1.45 var(--font-body);
+  box-shadow: 4px 5px 0 rgba(20, 33, 61, 0.9);
+  animation: say-in 0.55s var(--ease-out) both;
+}
+.char__say b {
+  display: block;
+  margin-bottom: 2px;
+  color: var(--accent);
+  font: 700 0.78rem/1 var(--font-head);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+.char__say::after {
+  content: '';
+  position: absolute;
+  left: 50%;
+  bottom: -11px;
+  width: 18px;
+  height: 18px;
+  translate: -50% 0;
+  rotate: 45deg;
+  background: #fff;
+  border-right: 2px solid var(--ink);
+  border-bottom: 2px solid var(--ink);
+}
+@keyframes say-in {
+  from {
+    opacity: 0;
+    transform: translateY(10px) scale(0.92);
+  }
+}
+@keyframes breathe {
+  0%,
+  100% {
+    transform: scale(1, 1);
+  }
+  50% {
+    transform: scale(1.006, 1.014);
+  }
+}
+
+/* moods: body acting on the one approved pose */
+.char[data-mood='talk'] .char__frame {
+  animation: talk 2.2s ease-in-out infinite;
+}
+.char[data-mood='think'] .char__frame {
+  animation: think 3.6s ease-in-out infinite;
+}
+.char[data-mood='happy'] .char__frame,
+.char[data-mood='cheer'] .char__frame {
+  animation:
+    hop 0.9s cubic-bezier(0.3, 0.7, 0.4, 1) 2,
+    breathe 5s ease-in-out 1.8s infinite;
+}
+.char[data-mood='confused'] .char__frame {
+  animation:
+    shake 0.6s ease-in-out 1,
+    think 3.6s ease-in-out 0.6s infinite;
+}
+@keyframes talk {
+  0%,
+  100% {
+    transform: rotate(0);
+  }
+  40% {
+    transform: rotate(1.4deg) translateY(-2px);
+  }
+}
+@keyframes think {
+  0%,
+  100% {
+    transform: rotate(0);
+  }
+  50% {
+    transform: rotate(-1.6deg);
+  }
+}
+@keyframes hop {
+  0%,
+  100% {
+    transform: translateY(0) scale(1, 1);
+  }
+  25% {
+    transform: translateY(0) scale(1.03, 0.96);
+  }
+  55% {
+    transform: translateY(-18px) scale(0.99, 1.02);
+  }
+}
+@keyframes shake {
+  25% {
+    transform: translateX(-6px) rotate(-1deg);
+  }
+  60% {
+    transform: translateX(5px) rotate(1deg);
+  }
+}

@@ -1,0 +1,322 @@
+/* Shared page heroes and the plain pages (Lessons, Lab, Playground, Journey). */
+.page__hero {
+  position: relative;
+  height: 62dvh;
+  min-height: 460px;
+  overflow: hidden;
+}
+.page__title {
+  position: absolute;
+  left: 6vw;
+  right: 6vw;
+  top: calc(var(--nav-h) + 56px);
+  z-index: 2;
+  color: #fff;
+  text-shadow: 0 2px 14px rgba(10, 20, 50, 0.45);
+}
+.page__title h1 {
+  margin-top: 14px;
+  font: 800 clamp(2.6rem, 7vw, 5.4rem) / 0.95 var(--font-head);
+}
+.page__title p:last-child {
+  margin-top: 12px;
+  max-width: 640px;
+  font-size: 1.15rem;
+}
+.page--plain {
+  padding-top: calc(var(--nav-h) + 50px);
+}
+.notfound {
+  display: grid;
+  justify-items: center;
+  gap: 20px;
+  padding: 30vh 6vw;
+  text-align: center;
+}
+
+/* the road of chapters */
+.road {
+  position: relative;
+  width: min(980px, 92vw);
+  margin: 0 auto;
+  padding: 8vh 0 14vh;
+  list-style: none;
+}
+.road::before {
+  content: '';
+  position: absolute;
+  left: 50%;
+  top: 0;
+  bottom: 0;
+  width: 6px;
+  translate: -50% 0;
+  border-radius: 3px;
+  background: repeating-linear-gradient(var(--line) 0 18px, transparent 18px 30px);
+}
+.road li {
+  position: relative;
+  width: 50%;
+  padding: 14px 34px;
+}
+.road li[data-side='right'] {
+  margin-left: 50%;
+}
+.stopcard {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 18px 20px;
+  border: 1px solid var(--line);
+  border-radius: 22px;
+  background: var(--paper);
+  box-shadow: var(--shadow);
+  text-decoration: none;
+  transition: transform 0.35s var(--ease-out);
+}
+.stopcard:hover {
+  transform: translateY(-4px) rotate(-0.5deg);
+}
+.stopcard__n {
+  display: grid;
+  place-items: center;
+  flex: none;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: var(--ink);
+  color: var(--paper);
+  font: 700 1.1rem/1 var(--font-head);
+}
+.stopcard[data-done] .stopcard__n {
+  background: var(--ok);
+}
+.stopcard small {
+  display: block;
+  color: var(--ink-3);
+  font: 600 0.82rem/1.2 var(--font-head);
+  letter-spacing: 0.04em;
+}
+.stopcard b {
+  display: block;
+  font: 700 1.15rem/1.25 var(--font-head);
+}
+.stopcard > span:last-child > span {
+  color: var(--ink-2);
+  font-size: 0.95rem;
+}
+
+/* playground & journey */
+.pg {
+  width: min(1180px, 92vw);
+  margin: 0 auto 14vh;
+}
+.pg__head h1 {
+  font-size: clamp(2.2rem, 5vw, 3.6rem);
+}
+.pg__head p {
+  margin-top: 8px;
+  color: var(--ink-2);
+}
+.pg__grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+  margin-top: 28px;
+}
+.pg__editor,
+.pg__view {
+  padding: 22px;
+  border: 1px solid var(--line);
+  border-radius: 24px;
+  background: var(--paper);
+  box-shadow: var(--shadow);
+}
+.pg__editor label {
+  display: block;
+  margin: 6px 0 8px;
+  font: 700 0.85rem/1 var(--font-head);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--ink-3);
+}
+.pg__editor textarea {
+  width: 100%;
+  padding: 16px;
+  border: 0;
+  border-radius: 14px;
+  background: var(--code-bg);
+  color: var(--code-ink);
+  font: 400 0.92rem/1.6 var(--font-code);
+  resize: vertical;
+}
+.pg__err {
+  margin-top: 8px;
+  color: var(--red);
+  font-weight: 600;
+}
+.pg__out {
+  margin-top: 14px;
+  padding: 12px 16px;
+  border-radius: 12px;
+  font: 600 1rem/1.4 var(--font-code);
+}
+.pg__out.is-ok {
+  background: #e6f6ec;
+  color: #14683a;
+}
+.pg__out.is-bad {
+  background: #fdecec;
+  color: #9b1c20;
+}
+.pg__root {
+  display: inline-block;
+  margin-bottom: 10px;
+  padding: 6px 12px;
+  border-radius: 8px;
+  background: var(--ink);
+  color: var(--paper);
+  font: 700 0.95rem/1 var(--font-code);
+}
+.pbox {
+  display: grid;
+  gap: 6px;
+  padding: 8px 10px;
+  border: 2px solid var(--line);
+  border-radius: 12px;
+  transition: all 0.3s;
+}
+.pbox--list {
+  border-style: dashed;
+}
+.pbox[data-on] {
+  border-color: var(--sun);
+  background: color-mix(in srgb, var(--sun) 12%, transparent);
+}
+.pbox__row {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+}
+.pbox__key {
+  padding-top: 4px;
+  color: #b06b00;
+  font: 600 0.88rem/1.2 var(--font-code);
+  white-space: nowrap;
+}
+:root[data-theme='night'] .pbox__key {
+  color: #ffd27a;
+}
+.pval {
+  padding: 4px 8px;
+  border-radius: 8px;
+  font: 500 0.9rem/1.2 var(--font-code);
+}
+.pval[data-on] {
+  background: var(--ok);
+  color: #fff;
+}
+
+.meter {
+  height: 18px;
+  margin-top: 24px;
+  border-radius: 9px;
+  background: var(--line);
+  overflow: hidden;
+}
+.meter span {
+  display: block;
+  height: 100%;
+  background: linear-gradient(90deg, #2f6fe0, #7c4fe0);
+  transition: width 1s var(--ease-out);
+}
+.gems {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 10px;
+  margin: 26px 0;
+  padding: 0;
+  list-style: none;
+}
+.gems a {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  min-height: 56px;
+  padding: 10px 14px;
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  background: var(--paper);
+  text-decoration: none;
+  opacity: 0.6;
+}
+.gems a[data-done] {
+  opacity: 1;
+}
+.gem--small {
+  width: 28px;
+  height: 28px;
+  filter: grayscale(1);
+  animation: none;
+}
+.gems a[data-done] .gem--small {
+  filter: none;
+}
+.cert {
+  display: grid;
+  gap: 10px;
+  margin-bottom: 22px;
+  padding: 34px;
+  border: 2px dashed var(--line);
+  border-radius: 26px;
+  background: var(--paper);
+  text-align: center;
+}
+.cert[data-ready] {
+  border: 6px double #c9a24a;
+  background: #fffaf0;
+  color: #14213d;
+}
+.cert__kicker {
+  font: 700 0.9rem/1 var(--font-head);
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: #b07c1a;
+}
+.cert h2 {
+  font-size: clamp(2rem, 5vw, 3.4rem);
+}
+.cert__small {
+  color: #6b7896;
+}
+.cert__name {
+  display: grid;
+  justify-items: center;
+  gap: 6px;
+  margin-top: 12px;
+  font-weight: 600;
+}
+.cert__name input {
+  min-height: 44px;
+  padding: 0 14px;
+  border: 2px solid var(--line);
+  border-radius: 12px;
+  background: var(--paper-2);
+  color: var(--ink);
+  font: inherit;
+  text-align: center;
+}
+
+@media (max-width: 760px) {
+  .road::before {
+    left: 20px;
+  }
+  .road li,
+  .road li[data-side='right'] {
+    width: 100%;
+    margin-left: 0;
+    padding: 10px 0 10px 40px;
+  }
+  .pg__grid {
+    grid-template-columns: 1fr;
+  }
+}

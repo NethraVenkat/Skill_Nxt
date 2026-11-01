@@ -1,0 +1,51 @@
+.world {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+}
+.world > svg {
+  position: absolute;
+  inset: -40px;
+  width: calc(100% + 80px);
+  height: calc(100% + 80px);
+}
+.world [data-depth] {
+  will-change: transform;
+}
+.cloud {
+  animation: cloud-drift var(--d) linear infinite;
+  animation-delay: var(--o);
+}
+@keyframes cloud-drift {
+  from {
+    transform: translateX(-260px);
+  }
+  to {
+    transform: translateX(260px);
+  }
+}
+.birds {
+  animation: birds 38s linear infinite;
+}
+@keyframes birds {
+  from {
+    transform: translate(-200px, 20px);
+  }
+  to {
+    transform: translate(1500px, -60px);
+  }
+}
+.ripples {
+  animation: ripple 4.5s ease-in-out infinite alternate;
+}
+@keyframes ripple {
+  from {
+    transform: translateX(-14px);
+    opacity: 0.25;
+  }
+  to {
+    transform: translateX(14px);
+    opacity: 0.7;
+  }
+}
