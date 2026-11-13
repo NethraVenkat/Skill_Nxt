@@ -1,0 +1,150 @@
+@keyframes globe-float {
+  0%,
+  100% {
+    transform: translateY(0) rotate(-2deg);
+  }
+  50% {
+    transform: translateY(-7px) rotate(1deg);
+  }
+}
+@keyframes map-pulse {
+  0%,
+  100% {
+    opacity: 0.2;
+  }
+  50% {
+    opacity: 0.7;
+  }
+}
+.map-pulse {
+  animation: map-pulse 5s ease-in-out infinite;
+}
+.map-route {
+  animation: route-dash 30s linear infinite;
+}
+@keyframes route-dash {
+  to {
+    stroke-dashoffset: -130;
+  }
+}
+@keyframes route-travel {
+  0% {
+    opacity: 1;
+    transform: scale(0.96);
+    clip-path: circle(100% at 65% 45%);
+  }
+  48% {
+    opacity: 1;
+    transform: scale(1.04);
+    clip-path: circle(100% at 65% 45%);
+  }
+  100% {
+    opacity: 0;
+    transform: scale(1.45);
+    clip-path: circle(0 at 65% 45%);
+    visibility: hidden;
+  }
+}
+@keyframes scene-arrive {
+  from {
+    opacity: 0.2;
+    transform: translateY(14px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+.scene-enter {
+  animation: scene-arrive 0.7s cubic-bezier(0.2, 0.7, 0.2, 1) both;
+}
+.home-heading {
+  animation: scene-arrive 1.6s 0.3s both;
+}
+.home-world {
+  animation: scene-arrive 1.8s 0.2s both;
+}
+.home .journey-line {
+  animation: scene-arrive 1.6s 0.65s both;
+}
+.home .enter-atlas {
+  animation: scene-arrive 1.5s 0.8s both;
+}
+.home:focus-within * {
+  animation-delay: 0s;
+}
+@keyframes plant {
+  from {
+    opacity: 0;
+    transform: translateY(-30px) scale(0.6);
+  }
+  70% {
+    transform: translateY(3px) scale(1.1);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+@keyframes card-arrive {
+  from {
+    opacity: 0;
+    transform: translateY(20px) rotateX(12deg) scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) rotate(var(--tilt, 0deg)) scale(1);
+  }
+}
+@keyframes card-hover {
+  0%,
+  100% {
+    transform: translateY(0) rotate(var(--tilt));
+  }
+  50% {
+    transform: translateY(-5px) rotate(0deg);
+  }
+}
+@keyframes ticket-flip {
+  from {
+    opacity: 0;
+    transform: perspective(600px) rotateX(-50deg);
+  }
+  to {
+    opacity: 1;
+    transform: perspective(600px) rotateX(0);
+  }
+}
+@keyframes vs-slam {
+  from {
+    opacity: 0;
+    transform: translate(-50%, -50%) rotate(-8deg) scale(2);
+  }
+  to {
+    opacity: 1;
+    transform: translate(-50%, -50%) rotate(-8deg) scale(1);
+  }
+}
+@keyframes auction-reveal {
+  0%,
+  20% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+@keyframes clock-pulse {
+  50% {
+    opacity: 0.68;
+    transform: scale(1.025);
+  }
+}
+.urgent:not(.ended) .timer-face strong {
+  animation: clock-pulse 1s ease-in-out infinite;
+}
+.ended .timer-face strong {
+  animation: none;
+}

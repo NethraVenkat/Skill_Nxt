@@ -1,0 +1,110 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>VentureCraft · Responsive QA</title>
+    <style>
+      body {
+        margin: 0;
+        background: #2c3338;
+        color: #fff;
+        font: 14px Arial;
+      }
+      header {
+        padding: 12px;
+        display: flex;
+        align-items: center;
+        gap: 15px;
+      }
+      select {
+        padding: 8px;
+      }
+      #frame {
+        border: 0;
+        transform-origin: top left;
+      }
+      #stage {
+        margin: auto;
+        overflow: hidden;
+      }
+      #report {
+        font-size: 12px;
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <label
+        >Viewport
+        <select id="size">
+          <option>1920×1080</option>
+          <option>1440×900</option>
+          <option>1366×768</option>
+          <option>1024×768</option>
+          <option>768×1024</option>
+          <option>390×844</option>
+        </select></label
+      ><label
+        >Scene
+        <select id="scene">
+          <option value="/">Home</option>
+          <option value="/scene/3">03 Filter gates</option>
+          <option value="/scene/6">06 Storm</option>
+          <option value="/scene/7">07 Gauntlet</option>
+          <option value="/scene/8">08 Build</option>
+          <option value="/scene/9">09 Arena</option>
+          <option value="/scene/10">10 Concepts</option>
+          <option value="/scene/11">11 Finale</option>
+        </select></label
+      ><span id="report"></span>
+    </header>
+    <div id="stage">
+      <iframe id="frame" title="Responsive lesson viewport"></iframe>
+    </div>
+    <script>
+      const frame = document.getElementById("frame"),
+        size = document.getElementById("size"),
+        scene = document.getElementById("scene"),
+        stage = document.getElementById("stage");
+      function resize() {
+        const [w, h] = size.value.split("×").map(Number),
+          scale = Math.min(1, 1200 / w);
+        frame.width = w;
+        frame.height = h;
+        frame.style.transform = `scale(${scale})`;
+        stage.style.width = `${w * scale}px`;
+        stage.style.height = `${h * scale}px`;
+        report();
+      }
+      function report() {
+        if (!frame.contentDocument?.body) return;
+        const d = frame.contentDocument;
+        const bad = [
+          ...d.querySelectorAll("button,input,textarea,select,h2,h3,p"),
+        ].filter((e) => {
+          const r = e.getBoundingClientRect();
+          return (
+            r.width > 0 &&
+            (r.left < -1 || r.right > d.documentElement.clientWidth + 1)
+          );
+        });
+        document.getElementById("report").textContent =
+          `Scene ${d.location.pathname} · Viewport ${frame.contentWindow.innerWidth} × ${frame.contentWindow.innerHeight} · content width ${d.documentElement.scrollWidth} · outside controls/text: ${bad.length} · ${d.querySelector("main h1") && [...d.images].every((i) => i.complete && i.naturalWidth > 0) && !d.getAnimations().some((a) => a.effect.getTiming().iterations !== Infinity && a.playState === "running") ? "READY" : "ANIMATING"}`;
+      }
+      size.addEventListener("change", resize);
+      scene.addEventListener("change", () => (frame.src = scene.value));
+      frame.addEventListener("load", () => {
+        resize();
+        new MutationObserver(report).observe(frame.contentDocument.body, {
+          childList: true,
+          subtree: true,
+          attributes: true,
+        });
+        setTimeout(report, 1500);
+      });
+      frame.src = "/";
+      resize();
+      setInterval(report, 1500);
+    </script>
+  </body>
+</html>
