@@ -12,8 +12,15 @@ export const newTimer = (seconds) => ({
   deadline: null,
   started: false,
 });
+import { applyDecision, createInitialCompanyState } from "../simulator/engine.js";
+
 export const initialState = () => ({
-  version: 1,
+  version: 2,
+  companyState: createInitialCompanyState(),
+  companyHistory: [],
+  completedLessons: [],
+  missionSubmissions: [],
+  passportItems: [],
   currentScene: 0,
   completedScenes: [],
   globeFlags: [],
@@ -117,6 +124,21 @@ export function lessonReducer(s, a) {
             ),
           }
         : { ...s, globeFlags: [...s.globeFlags, a.flag] };
+    case "COMPANY_DECISION": {
+      const transition = applyDecision(s.companyState, a.decisionId);
+      return {
+        ...s,
+        companyState: transition.stateAfter,
+        companyHistory: [
+        ...s.companyHistory,
+        {
+          month: transition.stateAfter.monthsElapsed,
+          decisionId: transition.decision.id,
+          consequence: transition.consequence,
+        },
+        ],
+      };
+    }
     case "TIMER": {
       const t = s.timers[a.id];
       let next = { ...t };

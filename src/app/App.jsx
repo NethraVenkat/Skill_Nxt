@@ -30,6 +30,8 @@ import BuildLive from "../scenes/BuildLive";
 import ConceptWars from "../scenes/ConceptWars";
 import ConceptList from "../scenes/ConceptList";
 import Finale from "../scenes/Finale";
+import VentureHQ from "../scenes/VentureHQ";
+import { LabPage, MissionPage, PassportPage } from "../scenes/MvpSurfaces";
 const contents = [
   Scene01,
   Scene02,
@@ -224,6 +226,11 @@ export default function App() {
       </div>
       <Routes>
         <Route path="/" element={<Home />} />
+        <Route path="/hq" element={<VentureHQ />} />
+        <Route path="/mission/1" element={<MissionPage />} />
+        <Route path="/lab/persona" element={<LabPage />} />
+        <Route path="/lab/pricing" element={<LabPage type="pricing" />} />
+        <Route path="/passport" element={<PassportPage />} />
         {scenes.map((s, i) => (
           <Route
             key={s.title}

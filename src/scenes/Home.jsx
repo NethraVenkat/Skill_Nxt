@@ -109,6 +109,9 @@ export default function Home() {
           <p className="home-lesson-meta">
             MODULE 02 · CLASS 01 <span>31 MINUTES</span>
           </p>
+          <Link className="home-hq-link" to="/hq">
+            Run your virtual company <ArrowUpRight size={16} />
+          </Link>
         </div>
         <div className="home-world-stage">
           <div className="home-flag-field" aria-hidden="true">
