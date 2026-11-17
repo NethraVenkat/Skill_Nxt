@@ -2,30 +2,35 @@
 
 ## Visual direction
 
-Dark-first, cinematic, premium, and readable: Venture HQ should feel like a calm mission-control room rather than a casino or a science-fiction dashboard. Bright colour is reserved for meaning: positive learning movement, warnings, errors, and active decisions.
+Light-first, bright, friendly, and premium: VentureCraft should feel like a modern learning studio with Duolingo energy and Notion clarity. The default canvas is warm cream with white cards, coloured module accents, and soft gradients. Dark mode remains available as a deep indigo variation, never black.
 
 ## Colour tokens
 
 | Token | Hex | Use | Contrast requirement |
 |---|---|---|---|
-| `ink-950` | `#071018` | App background | N/A |
-| `ink-900` | `#0B1722` | Sidebar and panels | N/A |
-| `ink-800` | `#132433` | Cards and inputs | N/A |
-| `ink-700` | `#1D3548` | Borders and chart grid | N/A |
-| `text-primary` | `#F4F8FA` | Body and headings | ≥7:1 on ink-950 |
-| `text-secondary` | `#B6C7D1` | Supporting text | ≥4.5:1 on ink-900 |
-| `text-muted` | `#8299A6` | Metadata only | ≥4.5:1 at 14px |
-| `cyan-action` | `#55D6E8` | Primary action and focus | ≥4.5:1 on ink-950 |
-| `mint-positive` | `#66E0A3` | Improvement and accepted proof | Pair with icon/text |
-| `amber-warning` | `#FFC857` | Risk and review due | Pair with icon/text |
-| `coral-error` | `#FF786E` | Failure and validation | Pair with icon/text |
-| `violet-insight` | `#B99CFF` | Insight and AI practice | Pair with label |
+| Token | Hex | Use | Contrast requirement |
+|---|---|---|---|
+| `bg` | `#FFF8F0` | Warm app background | N/A |
+| `surface` | `#FFFFFF` | Sidebar, cards, and inputs | N/A |
+| `tint` | `#F7F4FF` | Soft tinted surfaces | N/A |
+| `text` | `#1E1B3A` | Body and headings | ≥7:1 on bg |
+| `text-secondary` | `#514C72` | Supporting text | ≥4.5:1 on surface |
+| `text-muted` | `#7A7599` | Metadata only | ≥4.5:1 at 14px |
+| `primary` | `#6C4CF1` | Buttons, active navigation, focus | ≥4.5:1 on surface |
+| `coral` | `#FF6B5B` | Problems and error accent | Pair with icon/text |
+| `sunshine` | `#FFC53D` | Money and warnings | Use dark ink text |
+| `mint` | `#1FBF8F` | Validation and success | Pair with icon/text |
+| `sky` | `#2D9CFF` | Customers and discovery | Pair with icon/text |
+| `pink` | `#FF5FA2` | Growth and momentum | Pair with icon/text |
+| `orange` | `#FF8A3D` | MVP and making | Pair with icon/text |
+| `teal` | `#14B8A6` | Funding | Pair with icon/text |
+| `indigo` | `#4F46E5` | Scaling | Pair with icon/text |
 
-Never communicate status by colour alone. Use text, icon, and chart pattern. Provide a light-theme option only after dark-theme contrast is verified.
+Never communicate status by colour alone. Use text and icons alongside colour. Never use white text on sunshine; use dark ink instead.
 
 ## Typography
 
-Use `Inter` or a system sans stack for UI and `Space Grotesk` or system sans for display headings. Numbers use tabular numerals.
+Use **Plus Jakarta Sans** for UI and **Bricolage Grotesque** for display headings. Numbers use tabular numerals.
 
 | Token | Size / line height | Use |
 |---|---|---|

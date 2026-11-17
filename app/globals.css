@@ -1,0 +1,363 @@
+/* Fonts are stored inside the project (public/fonts), so no download or install is needed. */
+@font-face {
+  font-family: "Bricolage Grotesque Variable";
+  font-style: normal;
+  font-weight: 200 800;
+  font-display: swap;
+  src: url("/fonts/bricolage-grotesque.woff2") format("woff2");
+}
+@font-face {
+  font-family: "Plus Jakarta Sans Variable";
+  font-style: normal;
+  font-weight: 200 800;
+  font-display: swap;
+  src: url("/fonts/plus-jakarta-sans.woff2") format("woff2");
+}
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/*
+  VentureCraft theme
+  - Backgrounds: the original cinematic artwork (observatory, studio, laboratory…)
+  - On top: bright, colourful glass cards so learning feels friendly.
+  Colours are RGB triplets so Tailwind opacity helpers (bg-coral/15) work.
+*/
+:root {
+  --color-bg: 7 18 27;
+  --color-surface: 14 28 41;
+  --color-tint: 27 45 63;
+  --color-border: 68 92 116;
+  --color-text: 250 246 238;
+  --color-text-secondary: 214 220 228;
+  --color-text-muted: 160 174 190;
+
+  --color-primary: 150 120 255;
+  --color-gold: 236 192 128;
+  --color-coral: 255 128 112;
+  --color-sunshine: 255 204 77;
+  --color-mint: 64 214 160;
+  --color-sky: 92 178 255;
+  --color-pink: 255 112 176;
+  --color-orange: 255 154 84;
+  --color-teal: 56 214 194;
+  --color-indigo: 140 150 255;
+  --color-violet: 178 150 255;
+
+  --color-success: 64 214 160;
+  --color-warning: 255 204 77;
+  --color-error: 255 128 118;
+  --color-insight: 196 181 253;
+
+  --font-sans: "Plus Jakarta Sans Variable", "Plus Jakarta Sans", system-ui, sans-serif;
+  --font-display: "Bricolage Grotesque Variable", "Bricolage Grotesque", system-ui, sans-serif;
+  --font-cinema: Georgia, "Times New Roman", serif;
+
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-6: 24px;
+  --space-8: 32px;
+  --space-12: 48px;
+  --space-16: 64px;
+  --radius-control: 12px;
+  --radius-card: 20px;
+  --radius-pill: 999px;
+  --shadow-card: 0 18px 44px rgb(0 0 0 / 35%);
+  --motion-fast: 150ms;
+  --motion-standard: 250ms;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  background: rgb(var(--color-bg));
+  color-scheme: dark;
+}
+
+body {
+  min-height: 100vh;
+  margin: 0;
+  background: rgb(var(--color-bg));
+  color: rgb(var(--color-text));
+  font-family: var(--font-sans);
+  font-size: 16px;
+  line-height: 1.6;
+}
+
+button,
+input,
+textarea,
+select {
+  font: inherit;
+}
+
+button,
+a {
+  -webkit-tap-highlight-color: transparent;
+}
+
+:focus-visible {
+  outline: 3px solid rgb(var(--color-sunshine));
+  outline-offset: 3px;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  font-family: var(--font-display);
+  letter-spacing: -0.02em;
+}
+
+::selection {
+  background: rgb(var(--color-primary) / 45%);
+}
+
+.eyebrow {
+  color: rgb(var(--color-gold));
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+
+/* ---------- Glass panels that sit on the artwork ---------- */
+@layer components {
+  .glass {
+    background: rgb(var(--color-surface) / 72%);
+    border: 1px solid rgb(255 255 255 / 12%);
+    -webkit-backdrop-filter: blur(14px) saturate(1.2);
+    backdrop-filter: blur(14px) saturate(1.2);
+    box-shadow: var(--shadow-card);
+  }
+
+  .glass-strong {
+    background: rgb(var(--color-surface) / 88%);
+    border: 1px solid rgb(255 255 255 / 12%);
+    -webkit-backdrop-filter: blur(18px) saturate(1.2);
+    backdrop-filter: blur(18px) saturate(1.2);
+    box-shadow: var(--shadow-card);
+  }
+
+  .btn-rainbow {
+    background-image: linear-gradient(110deg, rgb(var(--color-primary)), rgb(var(--color-pink)));
+  }
+
+  /* Friendly learning boxes */
+  .box-simple {
+    background: rgb(var(--color-sunshine) / 12%);
+    border: 1px solid rgb(var(--color-sunshine) / 40%);
+  }
+  .box-remember {
+    background: rgb(var(--color-mint) / 12%);
+    border: 1px solid rgb(var(--color-mint) / 40%);
+  }
+  .box-example {
+    background: rgb(var(--color-sky) / 12%);
+    border: 1px solid rgb(var(--color-sky) / 40%);
+  }
+  .box-oops {
+    background: rgb(var(--color-coral) / 12%);
+    border: 1px solid rgb(var(--color-coral) / 40%);
+  }
+}
+
+/* ---------- Cinematic scene background (from the original Venture Atlas) ---------- */
+.scene-bg {
+  --depth-x: 0;
+  --depth-y: 0;
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  overflow: hidden;
+  background: #0b1923;
+  pointer-events: none;
+}
+
+.scene-bg--absolute {
+  position: absolute;
+}
+
+.scene-plate {
+  position: absolute;
+  inset: -1.5%;
+  width: 103%;
+  height: 103%;
+  object-fit: cover;
+  object-position: 62% 50%;
+  transform: translate(calc(var(--depth-x) * -6px), calc(var(--depth-y) * -3px));
+  animation: scene-wake 1.4s 0.1s both;
+  transition: transform 0.8s ease-out;
+  filter: saturate(0.95);
+}
+
+.scene-light {
+  position: absolute;
+  inset: 0;
+  background-position: 62% 50%;
+  background-size: cover;
+  mix-blend-mode: screen;
+  pointer-events: none;
+}
+
+.scene-light--city {
+  clip-path: inset(25% 0 25% 35%);
+  opacity: 0.14;
+  animation: city-ignition 0.8s 0.2s both;
+}
+
+.scene-light--core {
+  clip-path: ellipse(20% 35% at 69% 46%);
+  opacity: 0.16;
+  animation: core-ignition 1.4s 0.5s both;
+}
+
+.scene-route {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0.65;
+}
+
+.scene-route path {
+  fill: none;
+  stroke: #ffe0a1;
+  stroke-width: 2;
+  stroke-dasharray: 1600;
+  stroke-dashoffset: 1600;
+  animation: map-route-travel 0.8s 0.8s both;
+  filter: drop-shadow(0 0 5px #ffd77b);
+}
+
+.scene-shade {
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(90deg, rgba(3, 13, 20, 0.72), rgba(4, 14, 23, 0.42) 34%, transparent 61%),
+    linear-gradient(0deg, #06121bdb, transparent 25%, transparent 81%, #07121ac9);
+}
+
+/* Inside the app, content covers more of the screen, so the shade is a little stronger. */
+.scene-shade--app {
+  background:
+    linear-gradient(90deg, rgba(3, 13, 20, 0.78), rgba(4, 14, 23, 0.55) 45%, rgba(4, 14, 23, 0.35)),
+    linear-gradient(0deg, #06121be6, transparent 35%, transparent 80%, #07121ad0);
+}
+
+.scene-reflection {
+  position: absolute;
+  inset: auto -3% -15px;
+  height: 14%;
+  background: linear-gradient(0deg, #050b11d9, transparent);
+  border-bottom: 3px solid #b8955140;
+  transform: translate(calc(var(--depth-x) * -9px), calc(var(--depth-y) * -3px));
+  transition: transform 0.8s ease-out;
+}
+
+.nova-figure {
+  transform: translate(calc(var(--depth-x) * -5px), calc(var(--depth-y) * -2px));
+  transition: transform 0.8s ease-out;
+  filter: drop-shadow(10px 20px 15px #0008);
+}
+
+@keyframes scene-wake {
+  from {
+    opacity: 0;
+    transform: scale(1.04);
+  }
+}
+@keyframes city-ignition {
+  from {
+    opacity: 0;
+  }
+}
+@keyframes core-ignition {
+  from {
+    opacity: 0;
+  }
+  60% {
+    opacity: 0.32;
+  }
+}
+@keyframes map-route-travel {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+/* ---------- Small celebrations ---------- */
+@keyframes rise-in {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+}
+.rise-in {
+  animation: rise-in 0.45s ease-out both;
+}
+
+@keyframes pop {
+  0% {
+    transform: scale(0.6);
+    opacity: 0;
+  }
+  70% {
+    transform: scale(1.15);
+  }
+}
+.pop {
+  animation: pop 0.4s ease-out both;
+}
+
+@keyframes confetti-fall {
+  from {
+    transform: translate3d(0, -20vh, 0) rotate(0deg);
+    opacity: 1;
+  }
+  to {
+    transform: translate3d(var(--drift, 0px), 105vh, 0) rotate(720deg);
+    opacity: 0.9;
+  }
+}
+.confetti-piece {
+  position: fixed;
+  top: 0;
+  width: 10px;
+  height: 14px;
+  border-radius: 3px;
+  z-index: 60;
+  pointer-events: none;
+  animation: confetti-fall 1.8s ease-in forwards;
+}
+
+/* Underlined business words with a friendly tooltip */
+.term {
+  text-decoration: underline dotted rgb(var(--color-sunshine));
+  text-decoration-thickness: 2px;
+  text-underline-offset: 4px;
+  cursor: help;
+  color: inherit;
+}
+
+input[type="range"] {
+  accent-color: rgb(var(--color-primary));
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    transition-duration: 0.01ms !important;
+    animation-duration: 0.01ms !important;
+  }
+  .confetti-piece {
+    display: none;
+  }
+}

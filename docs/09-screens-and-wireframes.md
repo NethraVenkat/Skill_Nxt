@@ -5,8 +5,8 @@
 | Route | Purpose | Primary action | Empty/loading/error state |
 |---|---|---|---|
 | `/` | Public promise and playable preview | Run first decision | Preview skeleton; retry if simulator fails |
-| `/signup` | Account creation | Create account | Email resend and provider error |
-| `/onboarding` | Idea, context, schedule, skill check | Create venture | Save draft; validation message |
+| `/signup` | Legacy redirect to open learning | Start learning | Redirects to `/hq` |
+| `/onboarding` | Name, venture idea, and skill check | Start learning | Local progress save; validation message |
 | `/hq` | Venture HQ dashboard | Start next action | New venture checklist; state load skeleton; retry |
 | `/curriculum` | Nine-module map | Open module | Locked explanation; progress skeleton |
 | `/lessons/[lessonId]` | Six-step lesson player | Commit decision / continue | Resume last step; recover transition |
@@ -144,7 +144,7 @@ Desktop uses a fixed left navigation rail (Venture HQ, Curriculum, Simulator, La
 
 ```mermaid
 flowchart TD
-  Home["/"] --> Auth["/signup"]
+  Home["/"] --> Onboarding["/onboarding"]
   Auth --> Onboard["/onboarding"]
   Onboard --> HQ["/hq"]
   HQ --> Curriculum["/curriculum"]

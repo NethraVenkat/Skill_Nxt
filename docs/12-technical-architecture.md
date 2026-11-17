@@ -6,7 +6,7 @@
 src/
   app/
     (marketing)/page.tsx
-    (auth)/signup/page.tsx
+    (auth)/signup/page.tsx (legacy redirect)
     (app)/hq/page.tsx
     (app)/curriculum/page.tsx
     (app)/lessons/[lessonId]/page.tsx
@@ -47,6 +47,8 @@ src/
   styles/
     tokens.css
 ```
+
+Learner routes are open by default. Guest progress is held in the versioned browser store `venturecraft:v1`, with JSON import/export in the learner menu. Only `/admin/*` is gated by the admin cookie; Supabase remains available for future server-side features but is not required for learner flows.
 
 The existing application can be migrated into this structure by preserving content and state semantics while replacing client-only persistence with Supabase-backed snapshots.
 
